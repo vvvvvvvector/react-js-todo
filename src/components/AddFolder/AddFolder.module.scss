@@ -1,0 +1,35 @@
+.add-folder {
+
+    &__popup {
+        width: 250px;
+        height: 148px;
+        padding: 18px;
+        background: #FFFFFF;
+        box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.05);
+        border-radius: 10px;
+        box-sizing: border-box; // elements(popup div) cannot go abroad borders
+
+        button {
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        &-badges {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 12px;
+
+            // * == .badge; why i cant use .badge
+            * {
+                cursor: pointer;
+                width: 18px;
+                height: 18px;
+                border: 2px solid transparent;
+
+                &:active {
+                    border: 2px solid #525252;
+                }
+            }
+        }
+    }
+}

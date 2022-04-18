@@ -1,3 +1,8 @@
+import React from 'react';
+
+import database from './assets/database.json';
+
+import AddFolder from './components/AddFolder';
 import List from './components/List';
 
 import './index.scss';
@@ -25,28 +30,10 @@ function App() {
           },
           {
             color: "pink",
-            title: "Task 3",
-          },
-          {
-            color: "lightGreen",
-            title: "Task 4"
-          },
-          {
-            color: "grey",
-            title: "Task 4"
+            title: "Task 3"
           }
         ]} />
-        <List items={[
-          {
-            className: "list__add-button",
-            icon:
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6 1V11" stroke="" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M1 6H11" stroke="" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>,
-            title: "Add folder",
-          }
-        ]} />
+        <AddFolder badgeColors={database.colors} />
       </div>
       <div className="todo__tasks">
       </div>

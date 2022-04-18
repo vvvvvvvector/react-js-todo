@@ -12,9 +12,9 @@
         }
 
         span {
+            margin-left: 5px;
             color: #767676;
         }
-
 
         &:hover {
             svg {
@@ -47,35 +47,10 @@
         i {
             margin-right: 8px;
             display: inline-flex;
-        }
 
-        .badge {
-            width: 10px;
-            height: 10px;
-            border-radius: 30px;
+            // why i cant use .badge in li
             position: relative;
             left: 3px;
-
-            // that thing like extends
-            &--green {
-                background-color: #42B883;
-            }
-
-            &--blue {
-                background-color: #64C4ED;
-            }
-
-            &--pink {
-                background-color: #FFBBCC;
-            }
-
-            &--lightGreen {
-                background-color: #B6E6BD;
-            }
-
-            &--grey {
-                background-color: #C9D1D3;
-            }
         }
     }
 }

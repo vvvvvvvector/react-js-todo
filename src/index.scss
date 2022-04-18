@@ -29,3 +29,35 @@
         padding: 60px 20px; // top, lelf-right
     }
 }
+
+.button {
+    background-color: #4dd599;
+    border: 0;
+    color: #FFFFFF; // text color
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+
+    // mouse over
+    &:hover {
+        background-color: darken(#4dd599, 5%);
+    }
+
+    // click
+    &:active {
+        background-color: darken(#4dd599, 10%);
+    }
+}
+
+.textField {
+    background: #FFFFFF;
+    border: 1px solid #EFEFEF;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 8px 12px;
+    width: 100%;
+
+    &:focus {
+        border-color: #e1e1e1;
+    }
+}
