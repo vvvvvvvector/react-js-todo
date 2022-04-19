@@ -23,6 +23,8 @@
 
     &__sidebar {
         background-color: #E5E5E5;
+        border-top-left-radius: 10px; // temp, looks not perfect
+        border-bottom-left-radius: 10px; // temp, looks not perfect
         width: 225px;
         height: calc(100% - 120px);
         border-right: 1px solid #f1f1f1;

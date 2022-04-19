@@ -1,17 +1,33 @@
 .add-folder {
 
     &__popup {
+        top: -25px;
+        left: 14px;
         width: 250px;
         height: 148px;
         padding: 18px;
         background: #FFFFFF;
         box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.05);
         border-radius: 10px;
-        box-sizing: border-box; // elements(popup div) cannot go abroad borders
+        box-sizing: border-box;
+        position: relative; // elements(popup div) cannot go abroad borders thx to this
 
         button {
             width: 100%;
             margin-top: 15px;
+        }
+
+        svg {
+            position: absolute;
+            right: -5px;
+            top: -5px;
+            cursor: pointer;
+
+            &:hover {
+                path {
+                    fill: darken(#5C5C5C, 7%);
+                }
+            }
         }
 
         &-badges {
@@ -26,7 +42,8 @@
                 height: 18px;
                 border: 2px solid transparent;
 
-                &:active {
+                // .active(it is like class) != :active !!!! 
+                &.active {
                     border: 2px solid #525252;
                 }
             }
