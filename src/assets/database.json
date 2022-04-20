@@ -1,4 +1,9 @@
 {
+    "folders": [
+        {"id": 1, "name": "Task 1", "colorID": 2},
+        {"id": 2, "name": "Task 2", "colorID": 5},
+        {"id": 3, "name": "Task 3", "colorID": 3}
+    ],
     "colors": [
         {
             "id": 1,

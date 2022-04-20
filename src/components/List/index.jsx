@@ -10,10 +10,10 @@ function List({ items, addFolderClick }) {
                 <li key={index} className={(item.className ? Styles[item.className] : (Styles.active))}>
                     <i>
                         {item.icon ? (item.icon) : (
-                            <Badge color={item.color} />
+                            <Badge color={item.badgeColor} />
                         )}
                     </i>
-                    <span>{item.title}</span>
+                    <span>{item.name}</span>
                 </li>
             ))}
         </ul>
