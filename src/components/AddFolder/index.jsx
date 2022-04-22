@@ -29,7 +29,7 @@ function AddFolder({ badgeColors, addNewFolder }) {
                             <path d="M6 1V11" stroke="" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                             <path d="M1 6H11" stroke="" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>,
-                    title: "Add folder",
+                    name: "Add folder",
                 }
             ]} />
             {showPopup && <div className={Styles['add-folder__popup']}>

@@ -25,7 +25,7 @@ function App() {
             name: "All folders"
           }
         ]} />
-        <List items={folders.map((folder) => {
+        <List onRemoveFolder={(item) => console.log(item)} isRemovable={true} items={folders.map((folder) => {
           folder.badgeColor = database.colors[folder.colorID - 1].name;
           return folder;
         })} />

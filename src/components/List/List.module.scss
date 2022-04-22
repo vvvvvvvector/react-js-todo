@@ -1,4 +1,6 @@
 .list {
+    $self: &;
+
     margin-bottom: 30px;
 
     &__add-button {
@@ -29,11 +31,30 @@
         }
     }
 
+    &__remove-button {
+        opacity: 0;
+    }
+
     li {
         display: flex;
         align-items: center;
         padding: 10px 12px;
         cursor: pointer;
+
+        // flex 1 - span takes all allowed width
+        span {
+            flex: 1;
+        }
+
+        &:hover #{$self}__remove-button {
+            opacity: 1;
+
+            &:hover {
+                path {
+                    fill: black;
+                }
+            }
+        }
 
         // if selected
         &:hover {
