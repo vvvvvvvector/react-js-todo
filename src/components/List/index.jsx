@@ -6,11 +6,11 @@ import Styles from './List.module.scss';
 function List({ items, addFolderClick, isRemovable, onRemoveFolder }) {
 
     const removeFolder = (item) => {
-        if(window.confirm("Do You really want to delete the folder?")){
+        if (window.confirm("Do You really want to delete the folder?")) {
             onRemoveFolder(item);
-        } 
+        }
     }
-    
+
     return (
         <ul onClick={addFolderClick} className={Styles.list}>
             {items.map((item, index) => (

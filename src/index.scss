@@ -10,6 +10,7 @@
 }
 
 .todo {
+    display: flex; // because sidebar 'eats' all todo space
     position: absolute;
     left: 50%;
     top: 50%;
@@ -29,6 +30,11 @@
         height: calc(100% - 120px);
         border-right: 1px solid #f1f1f1;
         padding: 60px 20px; // top, lelf-right
+    }
+
+    &__tasks {
+        flex: 1; // tasks div takes all available width
+        padding: 60px;
     }
 }
 

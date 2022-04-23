@@ -4,6 +4,7 @@ import database from './assets/database.json';
 
 import AddFolder from './components/AddFolder';
 import List from './components/List';
+import Tasks from './components/Tasks';
 
 import './index.scss';
 
@@ -32,6 +33,7 @@ function App() {
         <AddFolder addNewFolder={addFolder} badgeColors={database.colors} />
       </div>
       <div className="todo__tasks">
+        <Tasks />
       </div>
     </div>
   );
