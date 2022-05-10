@@ -29,6 +29,16 @@
     &__items {
         margin-top: 30px;
 
+        h2 {
+            position: absolute; // align center
+            left: 50%; // align center
+            top: 50%; // align center
+            font-family: 'Montserrat';
+            font-weight: bold;
+            font-size: 32px;
+            color: #C9D1D3;
+        }
+
         &-row {
             display: flex; // checkbox and paragraph in one row
             align-items: center; // y alignment

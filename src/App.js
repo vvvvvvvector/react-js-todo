@@ -49,7 +49,7 @@ function App() {
         <AddFolder addNewFolder={addFolder} badgeColors={colors} />
       </div>
       <div className="todo__tasks">
-        {folders.length > 0 && selectedFolder && <Tasks item={selectedFolder} />}
+        {folders.length > 0 && selectedFolder && <Tasks folder={selectedFolder} />}
       </div>
     </div>
   );
