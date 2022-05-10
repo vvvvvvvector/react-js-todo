@@ -16,7 +16,38 @@
       "id": 3
     }
   ],
-  "tasks": [],
+  "tasks": [
+    {
+      "id": 1,
+      "folderId": 1,
+      "text": "task 1 text 1",
+      "completed": false
+    },
+    {
+      "id": 2,
+      "folderId": 1,
+      "text": "task 1 text 2",
+      "completed": false
+    },
+    {
+      "id": 3,
+      "folderId": 1,
+      "text": "task 1 text 3",
+      "completed": true
+    },
+    {
+      "id": 4,
+      "folderId": 2,
+      "text": "task 2 text",
+      "completed": false
+    },
+    {
+      "id": 5,
+      "folderId": 3,
+      "text": "task 3 text",
+      "completed": false
+    }
+  ],
   "colors": [
     {
       "id": 1,

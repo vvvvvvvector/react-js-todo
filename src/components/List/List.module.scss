@@ -44,6 +44,10 @@
         // flex 1 - span takes all allowed width
         span {
             flex: 1;
+            text-overflow: ellipsis; // cut the text
+            overflow: hidden; // everything out of border will not go from element boundary
+            width: 160px;
+            white-space: nowrap; // no transition on next line
         }
 
         &:hover #{$self}__remove-button {

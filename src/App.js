@@ -10,10 +10,11 @@ import './index.scss';
 function App() {
   const [folders, setFolders] = React.useState([]);
   const [colors, setColors] = React.useState([]);
+  const [selectedFolder, setSelectedFolder] = React.useState(null);
 
   React.useEffect(() => {
     async function fetchData() {
-      const foldersResponse = await axios.get("http://localhost:3001/folders?_expand=color");
+      const foldersResponse = await axios.get("http://localhost:3001/folders?_expand=color&_embed=tasks");
       const colorsResponse = await axios.get("http://localhost:3001/colors");
 
       setFolders(foldersResponse.data);
@@ -44,11 +45,11 @@ function App() {
             name: "All folders"
           }
         ]} />
-        <List onRemoveFolder={removeFolder} isRemovable={true} items={folders} />
+        <List onClickFolder={(folder) => setSelectedFolder(folder)} onRemoveFolder={removeFolder} isRemovable={true} items={folders} />
         <AddFolder addNewFolder={addFolder} badgeColors={colors} />
       </div>
       <div className="todo__tasks">
-        <Tasks />
+        {folders.length > 0 && selectedFolder && <Tasks item={selectedFolder} />}
       </div>
     </div>
   );
