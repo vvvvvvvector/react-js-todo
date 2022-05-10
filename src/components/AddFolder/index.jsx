@@ -7,14 +7,20 @@ import Styles from './AddFolder.module.scss';
 
 function AddFolder({ badgeColors, addNewFolder }) {
     const [showPopup, setShowPopup] = React.useState(false);
-    const [selectedColor, setSelectedColor] = React.useState(badgeColors[0].id);
+    const [selectedColor, setSelectedColor] = React.useState(null);
     const [newFolderName, setNewFolderName] = React.useState('');
+
+    React.useEffect(() => {
+        if (badgeColors.length > 0) {
+            setSelectedColor(badgeColors[0].id);
+        }
+    }, [badgeColors]);
 
     const addFolder = () => {
         if (!newFolderName) {
             alert('you must write folder name');
         } else {
-            addNewFolder({ "id": Math.random(), "name": newFolderName, "colorID": selectedColor });
+            addNewFolder({ "id": Math.random(), "name": newFolderName, "colorId": selectedColor });
             setNewFolderName('');
         }
     }

@@ -17,7 +17,7 @@ function List({ items, addFolderClick, isRemovable, onRemoveFolder }) {
                 <li key={index} className={(item.className ? Styles[item.className] : (Styles.active))}>
                     <i>
                         {item.icon ? (item.icon) : (
-                            <Badge color={item.badgeColor} />
+                            <Badge color={item.color.name} />
                         )}
                     </i>
                     <span>{item.name}</span>

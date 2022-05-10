@@ -1,8 +1,46 @@
 {
     "folders": [
-        {"id": 1, "name": "Task 1", "colorID": 2},
-        {"id": 2, "name": "Task 2", "colorID": 5},
-        {"id": 3, "name": "Task 3", "colorID": 3}
+        {
+            "id": 1,
+            "name": "Task 1",
+            "colorId": 2
+        },
+        {
+            "id": 2,
+            "name": "Task 2",
+            "colorId": 5
+        },
+        {
+            "id": 3,
+            "name": "Task 3",
+            "colorId": 3
+        }
+    ],
+    "tasks": [
+        {
+            "id": 1,
+            "folderId": 1,
+            "text": "hello world 1",
+            "done": true
+        },
+        {
+            "id": 2,
+            "folderId": 1,
+            "text": "hello world 2",
+            "done": false
+        },
+        {
+            "id": 3,
+            "folderId": 1,
+            "text": "hello world 3",
+            "done": true
+        },
+        {
+            "id": 4,
+            "folderId": 1,
+            "text": "hello world 4",
+            "done": true
+        }
     ],
     "colors": [
         {

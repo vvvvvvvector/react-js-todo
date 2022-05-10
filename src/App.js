@@ -1,6 +1,5 @@
 import React from 'react';
-
-import database from './assets/database.json';
+import axios from 'axios';
 
 import AddFolder from './components/AddFolder';
 import List from './components/List';
@@ -9,9 +8,23 @@ import Tasks from './components/Tasks';
 import './index.scss';
 
 function App() {
-  const [folders, setFolders] = React.useState(database.folders);
+  const [folders, setFolders] = React.useState([]);
+  const [colors, setColors] = React.useState([]);
+
+  React.useEffect(() => {
+    async function fetchData() {
+      const foldersResponse = await axios.get("http://localhost:3001/folders?_expand=color");
+      const colorsResponse = await axios.get("http://localhost:3001/colors");
+
+      setFolders(foldersResponse.data);
+      setColors(colorsResponse.data);
+    }
+
+    fetchData();
+  }, []); // [] - empty array means useEffect will be called one time
 
   const addFolder = (folder) => {
+    folder.color = colors[folder.colorId - 1];
     setFolders((prev) => [...prev, folder]);
   }
 
@@ -26,11 +39,8 @@ function App() {
             name: "All folders"
           }
         ]} />
-        <List onRemoveFolder={(item) => console.log(item)} isRemovable={true} items={folders.map((folder) => {
-          folder.badgeColor = database.colors[folder.colorID - 1].name;
-          return folder;
-        })} />
-        <AddFolder addNewFolder={addFolder} badgeColors={database.colors} />
+        <List onRemoveFolder={(item) => console.log(item)} isRemovable={true} items={folders} />
+        <AddFolder addNewFolder={addFolder} badgeColors={colors} />
       </div>
       <div className="todo__tasks">
         <Tasks />
