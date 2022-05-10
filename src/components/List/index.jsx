@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from 'axios';
+
 import Badge from '../Badge';
 
 import Styles from './List.module.scss';
@@ -7,7 +9,9 @@ function List({ items, addFolderClick, isRemovable, onRemoveFolder }) {
 
     const removeFolder = (item) => {
         if (window.confirm("Do You really want to delete the folder?")) {
-            onRemoveFolder(item);
+            axios.delete(`http://localhost:3001/folders/${item.id}`).then(() => { // deleting from backend
+                onRemoveFolder(item.id); // deleting from state
+            });
         }
     }
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 import Badge from '../Badge';
 import List from '../List';
@@ -7,6 +8,7 @@ import Styles from './AddFolder.module.scss';
 
 function AddFolder({ badgeColors, addNewFolder }) {
     const [showPopup, setShowPopup] = React.useState(false);
+    const [isLoading, setIsLoading] = React.useState(false);
     const [selectedColor, setSelectedColor] = React.useState(null);
     const [newFolderName, setNewFolderName] = React.useState('');
 
@@ -20,8 +22,16 @@ function AddFolder({ badgeColors, addNewFolder }) {
         if (!newFolderName) {
             alert('you must write folder name');
         } else {
-            addNewFolder({ "id": Math.random(), "name": newFolderName, "colorId": selectedColor });
-            setNewFolderName('');
+            setIsLoading(true);
+
+            axios.post("http://localhost:3001/folders", { "name": newFolderName, "colorId": selectedColor })
+                .then(({ data }) => { // use then -> when request 100% successful
+                    addNewFolder(data);
+                    setNewFolderName('');
+                })
+                .finally(() => { // no matter true or false
+                    setIsLoading(false);
+                });
         }
     }
 
@@ -53,7 +63,9 @@ function AddFolder({ badgeColors, addNewFolder }) {
                         />
                     ))}
                 </div>
-                <button onClick={addFolder} className='button'>Add</button>
+                <button onClick={addFolder} className='button'>
+                    {isLoading ? "Adding..." : "Add"}
+                </button>
             </div>}
         </div>
     );

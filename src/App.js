@@ -28,6 +28,11 @@ function App() {
     setFolders((prev) => [...prev, folder]);
   }
 
+  // filter -> remove(not include) item with removedFolderID from(in) new array
+  const removeFolder = (removedFolderId) => {
+    setFolders((prev) => prev.filter((item) => Number(item.id) !== Number(removedFolderId)));
+  }
+
   return (
     <div className="todo">
       <div className="todo__sidebar">
@@ -39,7 +44,7 @@ function App() {
             name: "All folders"
           }
         ]} />
-        <List onRemoveFolder={(item) => console.log(item)} isRemovable={true} items={folders} />
+        <List onRemoveFolder={removeFolder} isRemovable={true} items={folders} />
         <AddFolder addNewFolder={addFolder} badgeColors={colors} />
       </div>
       <div className="todo__tasks">
