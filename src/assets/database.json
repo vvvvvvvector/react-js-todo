@@ -1,22 +1,22 @@
 {
   "folders": [
     {
-      "name": "Task 1",
+      "name": "Intro to AI",
       "colorId": 5,
       "id": 1
     },
     {
-      "name": "Task 2",
+      "name": "React",
       "colorId": 2,
       "id": 2
     },
     {
-      "name": "Task 3",
+      "name": "A&DS II",
       "colorId": 4,
       "id": 3
     },
     {
-      "name": "Task 4",
+      "name": "Software engineering",
       "colorId": 8,
       "id": 4
     }
@@ -25,25 +25,25 @@
     {
       "id": 1,
       "folderId": 1,
-      "text": "task 1 text 1",
+      "text": "percepton",
       "completed": false
     },
     {
       "id": 2,
       "folderId": 1,
-      "text": "task 1 text 2",
+      "text": "adaline",
       "completed": false
     },
     {
       "id": 3,
       "folderId": 1,
-      "text": "task 1 text 3",
+      "text": "numbers proj",
       "completed": true
     },
     {
       "id": 4,
       "folderId": 2,
-      "text": "task 2 text",
+      "text": "hooks tutorial",
       "completed": false
     }
   ],

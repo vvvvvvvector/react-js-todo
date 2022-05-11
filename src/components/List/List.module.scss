@@ -10,12 +10,14 @@
         svg {
             path {
                 stroke: #767676;
+                transition: stroke 0.15s ease-in-out;
             }
         }
 
         span {
             margin-left: 5px;
             color: #767676;
+            transition: color 0.15s ease-in-out;
         }
 
         &:hover {

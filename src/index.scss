@@ -44,6 +44,8 @@
     color: #FFFFFF; // text color
     border-radius: 4px;
     padding: 10px 20px;
+    font-size: 14px;
+    width: 145px;
     cursor: pointer;
 
     // mouse over
@@ -55,6 +57,20 @@
     &:active {
         background-color: darken(#4dd599, 10%);
     }
+
+    &--cancel {
+        width: 90px;
+        background: #F4F6F8;
+        color: #444444;
+
+        &:hover {
+            background: darken($color: #F4F6F8, $amount: 3%);
+        }
+
+        &:active {
+            background: darken($color: #F4F6F8, $amount: 10%);
+        }
+    }
 }
 
 .textField {
@@ -64,6 +80,7 @@
     border-radius: 4px;
     padding: 8px 12px;
     width: 100%;
+    font-size: 14px;
 
     &:focus {
         border-color: #e1e1e1;

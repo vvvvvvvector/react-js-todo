@@ -1,0 +1,44 @@
+.add-task {
+    margin-top: 20px;
+
+    &__plus {
+        display: flex; // in one line
+        align-items: center; // y alignment
+        cursor: pointer;
+
+        svg {
+            margin-left: 4px;
+
+            path {
+                transition: stroke 0.15s ease-in-out;
+            }
+        }
+
+        span {
+            font-size: 16px;
+            color: #B4B4B4;
+            margin-left: 15px;
+            transition: color 0.15s ease-in-out;
+        }
+
+        &:hover {
+            svg {
+                path {
+                    stroke: darken($color: #B4B4B4, $amount: 20%);
+                }
+            }
+
+            span {
+                color: darken($color: #B4B4B4, $amount: 20%);
+            }
+        }
+
+    }
+
+    &__menu {
+        button {
+            margin-top: 16px;
+            margin-right: 10px;
+        }
+    }
+}
