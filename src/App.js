@@ -31,7 +31,17 @@ function App() {
 
   // filter -> remove(not include) item with removedFolderID from(in) new array
   const removeFolder = (removedFolderId) => {
-    setFolders((prev) => prev.filter((item) => Number(item.id) !== Number(removedFolderId)));
+    setFolders((prev) => prev.filter((folder) => Number(folder.id) !== Number(removedFolderId)));
+  }
+
+  const onEditFolderTitle = (id, newName) => {
+    const updatedFolders = folders.map((folder) => { // updating title in state
+      if (folder.id === id) {
+        folder.name = newName;
+      }
+      return folder;
+    });
+    setFolders(updatedFolders);
   }
 
   return (
@@ -49,7 +59,7 @@ function App() {
         <AddFolder addNewFolder={addFolder} badgeColors={colors} />
       </div>
       <div className="todo__tasks">
-        {folders.length > 0 && selectedFolder && <Tasks folder={selectedFolder} />}
+        {folders.length > 0 && selectedFolder && <Tasks folder={selectedFolder} onEditTitle={onEditFolderTitle} />}
       </div>
     </div>
   );

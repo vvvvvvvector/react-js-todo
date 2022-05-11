@@ -2,7 +2,7 @@
   "folders": [
     {
       "name": "Task 1",
-      "colorId": 1,
+      "colorId": 5,
       "id": 1
     },
     {
@@ -12,7 +12,7 @@
     },
     {
       "name": "Task 3",
-      "colorId": 6,
+      "colorId": 4,
       "id": 3
     },
     {
@@ -44,12 +44,6 @@
       "id": 4,
       "folderId": 2,
       "text": "task 2 text",
-      "completed": false
-    },
-    {
-      "id": 5,
-      "folderId": 3,
-      "text": "task 3 text",
       "completed": false
     }
   ],
