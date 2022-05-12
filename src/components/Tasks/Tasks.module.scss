@@ -1,4 +1,8 @@
 .tasks {
+    &:not(:last-of-type) { // if it isn't last folder (every folder but not last)
+        margin-bottom: 40px;
+    }
+
     &__title {
         font-family: 'Montserrat';
         font-size: 32px;

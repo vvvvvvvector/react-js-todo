@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Route, Routes, useNavigate, useLocation } from 'react-router-dom';
 
 import AddFolder from './components/AddFolder';
 import List from './components/List';
@@ -11,6 +12,9 @@ function App() {
   const [folders, setFolders] = React.useState([]);
   const [colors, setColors] = React.useState([]);
   const [selectedFolder, setSelectedFolder] = React.useState(null);
+
+  const navigate = useNavigate();
+  const location = useLocation();
 
   React.useEffect(() => {
     async function fetchData() {
@@ -24,8 +28,21 @@ function App() {
     fetchData();
   }, []); // [] - empty array means useEffect will be called one time
 
+  React.useEffect(() => {
+    const selectedFolderId = location.pathname.split("folders/")[1];
+    const selectedFolder = folders.find((folder) => {
+      if (folder.id === Number(selectedFolderId)) {
+        return folder;
+      }
+    });
+    if (selectedFolderId) {
+      setSelectedFolder(selectedFolder);
+    }
+  }, [folders, location.pathname]); // when one of this two values updating - rerender
+
   const addFolder = (folder) => {
     folder.color = colors[folder.colorId - 1];
+    folder.tasks = [];
     setFolders((prev) => [...prev, folder]);
   }
 
@@ -64,12 +81,17 @@ function App() {
             </svg>,
             name: "All folders"
           }
-        ]} />
-        <List onClickFolder={(folder) => setSelectedFolder(folder)} onRemoveFolder={removeFolder} isRemovable={true} items={folders} />
+        ]} onClickFolder={(folder) => navigate("/")} />
+        <List onClickFolder={(folder) => navigate(`/folders/${folder.id}`)} onRemoveFolder={removeFolder} isRemovable={true} items={folders} />
         <AddFolder addNewFolder={addFolder} badgeColors={colors} />
       </div>
       <div className="todo__tasks">
-        {folders.length > 0 && selectedFolder && <Tasks folder={selectedFolder} onEditTitle={onEditFolderTitle} onAddTask={onAddTask} />}
+        <Routes>
+          <Route exact path="/" element={folders && folders.map((folder) => (
+            <Tasks key={folder.id} folder={folder} onEditTitle={onEditFolderTitle} onAddTask={onAddTask} isFolderEmpty={folder.tasks.length === 0} showAddTask={false} />
+          ))} />
+          <Route path="/folders/:id" element={folders.length > 0 && selectedFolder && <Tasks folder={selectedFolder} onEditTitle={onEditFolderTitle} onAddTask={onAddTask} />} />
+        </Routes>
       </div>
     </div>
   );

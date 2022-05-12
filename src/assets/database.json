@@ -57,6 +57,18 @@
       "text": "new task test react",
       "completed": false,
       "id": 6
+    },
+    {
+      "folderId": 3,
+      "text": "algorithm 6",
+      "completed": false,
+      "id": 7
+    },
+    {
+      "folderId": 3,
+      "text": "readme for algorithm 5",
+      "completed": false,
+      "id": 8
     }
   ],
   "colors": [
