@@ -9,31 +9,31 @@
         &--green {
             color: #42B883;
         }
-    
+
         &--blue {
             color: #64C4ED;
         }
-    
+
         &--pink {
             color: #FFBBCC;
         }
-    
+
         &--lightGreen {
             color: #B6E6BD;
         }
-    
+
         &--grey {
             color: #C9D1D3;
         }
-    
+
         &--purple {
             color: #C355F5;
         }
-    
+
         &--black {
             color: #110133;
         }
-    
+
         &--red {
             color: #FF6464;
         }
@@ -60,16 +60,6 @@
     &__items {
         margin-top: 30px;
 
-        h2 {
-            position: absolute; // align center
-            left: 50%; // align center
-            top: 50%; // align center
-            font-family: 'Montserrat';
-            font-weight: bold;
-            font-size: 32px;
-            color: #C9D1D3;
-        }
-
         &-row {
             display: flex; // checkbox and paragraph in one row
             align-items: center; // y alignment
@@ -80,55 +70,64 @@
                 font-size: 16px;
             }
         }
+
+        &-empty {
+            h2 {
+                font-family: 'Montserrat';
+                font-weight: bold;
+                font-size: 32px;
+                color: #C9D1D3;
+            }
+        }
     }
+}
 
-    .checkbox {
-        &:hover {
-            label {
-                background-color: #F2F2F2;
-
-                svg {
-                    opacity: 1;
-
-                    path {
-                        stroke: #B3B3B3;
-                    }
-                }
-            }
-        }
-
-
-        input {
-            display: none; // hide default checkbox
-        }
-
+.checkbox {
+    &:hover {
         label {
-            cursor: pointer;
-            align-items: center; // y alignment of picture
-            justify-content: center; // x alignment of picture
-            display: flex; // circle border in this example
-            border: 2px solid #f2f2f2;
-            border-radius: 30px;
-            width: 20px;
-            height: 20px;
-            transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
-
-            svg {
-                opacity: 0;
-            }
-        }
-
-        // + right element of input, ~ left element of input
-        input:checked+label {
-            background-color: #4DD599;
-            border-color: #4DD599;
+            background-color: #F2F2F2;
 
             svg {
                 opacity: 1;
 
                 path {
-                    stroke: #FFFFFF;
+                    stroke: #B3B3B3;
                 }
+            }
+        }
+    }
+
+
+    input {
+        display: none; // hide default checkbox
+    }
+
+    label {
+        cursor: pointer;
+        align-items: center; // y alignment of picture
+        justify-content: center; // x alignment of picture
+        display: flex; // circle border in this example
+        border: 2px solid #f2f2f2;
+        border-radius: 30px;
+        width: 20px;
+        height: 20px;
+        transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+
+        svg {
+            opacity: 0;
+        }
+    }
+
+    // + right element of input, ~ left element of input
+    input:checked+label {
+        background-color: #4DD599;
+        border-color: #4DD599;
+
+        svg {
+            opacity: 1;
+
+            path {
+                stroke: #FFFFFF;
             }
         }
     }

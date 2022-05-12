@@ -5,7 +5,7 @@ import AddTask from '../AddTask';
 
 import Styles from './Tasks.module.scss';
 
-function Tasks({ folder, onEditTitle }) {
+function Tasks({ folder, onEditTitle, onAddTask }) {
     const editTitle = () => {
         const newName = window.prompt("The folder name:", folder.name);
         if (newName) {
@@ -31,27 +31,29 @@ function Tasks({ folder, onEditTitle }) {
 
             <div className={Styles['tasks__items']}>
                 {
-                    folder.tasks.length == 0 ?
-                        <h2>No tasks in folder</h2> : (
-                            <React.Fragment>
-                                {
-                                    folder.tasks.map((task) => (
-                                        <div key={task.id} className={Styles['tasks__items-row']}>
-                                            <div className={Styles['checkbox']}>
-                                                <input id={`task-${task.id}`} type="checkbox" />
-                                                <label htmlFor={`task-${task.id}`}>
-                                                    <svg width="11" height="8" viewBox="0 0 11 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M9.29999 1.20001L3.79999 6.70001L1.29999 4.20001" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                                                    </svg>
-                                                </label>
-                                            </div>
-                                            <p>{task.text}</p>
+                    folder.tasks.length == 0 ? (<div className={Styles['tasks__items-empty']}>
+                        <h2>No tasks in folder</h2>
+                        <AddTask folder={folder} onAddTask={onAddTask} />
+                    </div>) : (
+                        <React.Fragment>
+                            {
+                                folder.tasks.map((task) => (
+                                    <div key={task.id} className={Styles['tasks__items-row']}>
+                                        <div className={Styles['checkbox']}>
+                                            <input id={`task-${task.id}`} type="checkbox" />
+                                            <label htmlFor={`task-${task.id}`}>
+                                                <svg width="11" height="8" viewBox="0 0 11 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.29999 1.20001L3.79999 6.70001L1.29999 4.20001" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                                </svg>
+                                            </label>
                                         </div>
-                                    ))
-                                }
-                                <AddTask />
-                            </React.Fragment>
-                        )
+                                        <p>{task.text}</p>
+                                    </div>
+                                ))
+                            }
+                            <AddTask folder={folder} onAddTask={onAddTask} />
+                        </React.Fragment>
+                    )
                 }
             </div>
         </div>

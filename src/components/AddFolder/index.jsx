@@ -29,6 +29,9 @@ function AddFolder({ badgeColors, addNewFolder }) {
                     addNewFolder(data);
                     setNewFolderName('');
                 })
+                .catch(() => {
+                    alert("error while adding folder!");
+                })
                 .finally(() => { // no matter true or false
                     setIsLoading(false);
                 });

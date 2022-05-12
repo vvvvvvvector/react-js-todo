@@ -44,6 +44,16 @@ function App() {
     setFolders(updatedFolders);
   }
 
+  const onAddTask = (taskFolderId, task) => {
+    const updatedFolder = folders.map((folder) => {
+      if (folder.id === taskFolderId) {
+        folder.tasks = [...folder.tasks, task];
+      }
+      return folder;
+    });
+    setFolders(updatedFolder);
+  }
+
   return (
     <div className="todo">
       <div className="todo__sidebar">
@@ -59,7 +69,7 @@ function App() {
         <AddFolder addNewFolder={addFolder} badgeColors={colors} />
       </div>
       <div className="todo__tasks">
-        {folders.length > 0 && selectedFolder && <Tasks folder={selectedFolder} onEditTitle={onEditFolderTitle} />}
+        {folders.length > 0 && selectedFolder && <Tasks folder={selectedFolder} onEditTitle={onEditFolderTitle} onAddTask={onAddTask} />}
       </div>
     </div>
   );
