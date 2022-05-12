@@ -82,7 +82,9 @@ function App() {
             name: "All folders"
           }
         ]} onClickFolder={(folder) => navigate("/")} />
-        <List onClickFolder={(folder) => navigate(`/folders/${folder.id}`)} onRemoveFolder={removeFolder} isRemovable={true} items={folders} />
+        <div className="todo__sidebar-folders">
+          <List onClickFolder={(folder) => navigate(`/folders/${folder.id}`)} onRemoveFolder={removeFolder} isRemovable={true} items={folders} />
+        </div>
         <AddFolder addNewFolder={addFolder} badgeColors={colors} />
       </div>
       <div className="todo__tasks">

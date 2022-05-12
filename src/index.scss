@@ -30,6 +30,12 @@
         height: calc(100% - 120px);
         border-right: 1px solid #f1f1f1;
         padding: 60px 20px; // top, lelf-right
+
+        &-folders {
+            margin-bottom: 30px;
+            max-height: 360px;
+            overflow: auto;
+        }   
     }
 
     &__tasks {
