@@ -3,9 +3,40 @@
         font-family: 'Montserrat';
         font-size: 32px;
         line-height: 39px;
-        color: #64C4ED;
         padding-bottom: 20px; // margin-bottom cant move border!!!
         border-bottom: 1px solid #F2F2F2;
+
+        &--green {
+            color: #42B883;
+        }
+    
+        &--blue {
+            color: #64C4ED;
+        }
+    
+        &--pink {
+            color: #FFBBCC;
+        }
+    
+        &--lightGreen {
+            color: #B6E6BD;
+        }
+    
+        &--grey {
+            color: #C9D1D3;
+        }
+    
+        &--purple {
+            color: #C355F5;
+        }
+    
+        &--black {
+            color: #110133;
+        }
+    
+        &--red {
+            color: #FF6464;
+        }
 
         &:hover {
             svg {
