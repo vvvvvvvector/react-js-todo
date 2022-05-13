@@ -1,5 +1,6 @@
 .tasks {
-    &:not(:last-of-type) { // if it isn't last folder (every folder but not last)
+    &:not(:last-of-type) {
+        // if it isn't last folder (every folder but not last)
         margin-bottom: 40px;
     }
 
@@ -72,6 +73,36 @@
             p {
                 margin-left: 15px;
                 font-size: 16px;
+            }
+
+            &:hover &-actions {
+                opacity: 1;
+            }
+
+            &-actions {
+                display: flex;
+                margin-left: auto;
+                opacity: 0;
+
+                div {
+                    width: 25px;
+                    height: 25px;
+                    display: flex;
+                    align-items: center; // y alignment inside div
+                    justify-content: center; // x alignment inside div
+                    margin-right: 10px;
+                    border-radius: 6px;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: lighten($color: #DFDFDF, $amount: 10%);
+                    }
+
+                    svg {
+                        width: 15px;
+                        height: 15px;
+                    }
+                }
             }
         }
 
