@@ -6,7 +6,7 @@ import Task from './Task';
 
 import Styles from './Tasks.module.scss';
 
-function Tasks({ folder, onEditTitle, onAddTask, onRemoveTask, isFolderEmpty = false, showAddTask = true }) {
+function Tasks({ folder, onEditTitle, onAddTask, onRemoveTask, onEditTaskText, isFolderEmpty = false, showAddTask = true }) {
     const editTitle = () => {
         const newName = window.prompt("The folder name:", folder.name);
         if (newName) {
@@ -33,7 +33,17 @@ function Tasks({ folder, onEditTitle, onAddTask, onRemoveTask, isFolderEmpty = f
     }
 
     const editTask = (task) => {
-        alert(`Edit task folderId: ${task.folderId} taskId:${task.id}`);
+        const newText = window.prompt("The task text: ", task.text);
+        if (newText) {
+            onEditTaskText(task.folderId, task.id, newText);
+            axios.patch(`http://localhost:3001/tasks/${task.id}`, { // updating title in database
+                text: newText
+            }).catch(() => {
+                alert("Error while updating task text!");
+            });
+        } else if (newText.length == 0) {
+            alert("The task text shouldn't be empty!");
+        }
     }
 
     return (

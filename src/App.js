@@ -81,6 +81,21 @@ function App() {
     setFolders(updatedFolders);
   }
 
+  const onEditTaskText = (folderId, taskId, newText) => {
+    const updatedFolders = folders.map((folder) => {
+      if (folder.id === folderId) {
+        folder.tasks.map((task) => {
+          if (task.id === taskId) {
+            task.text = newText;
+          }
+          return task;
+        });
+      }
+      return folder;
+    });
+    setFolders(updatedFolders);
+  }
+
   return (
     <div className="todo">
       <div className="todo__sidebar">
@@ -100,9 +115,9 @@ function App() {
       <div className="todo__tasks">
         <Routes>
           <Route exact path="/" element={folders && folders.map((folder) => (
-            <Tasks key={folder.id} folder={folder} onEditTitle={onEditFolderTitle} onAddTask={onAddTask} onRemoveTask={onRemoveTask} isFolderEmpty={folder.tasks.length === 0} showAddTask={false} />
+            <Tasks key={folder.id} folder={folder} onEditTitle={onEditFolderTitle} onAddTask={onAddTask} onRemoveTask={onRemoveTask} onEditTaskText={onEditTaskText} isFolderEmpty={folder.tasks.length === 0} showAddTask={false} />
           ))} />
-          <Route path="/folders/:id" element={folders.length > 0 && selectedFolder && <Tasks folder={selectedFolder} onEditTitle={onEditFolderTitle} onAddTask={onAddTask} onRemoveTask={onRemoveTask} />} />
+          <Route path="/folders/:id" element={folders.length > 0 && selectedFolder && <Tasks folder={selectedFolder} onEditTitle={onEditFolderTitle} onAddTask={onAddTask} onRemoveTask={onRemoveTask} onEditTaskText={onEditTaskText} />} />
         </Routes>
       </div>
     </div>

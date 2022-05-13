@@ -60,13 +60,13 @@
     {
       "id": 1,
       "folderId": 1,
-      "text": "percepton",
+      "text": "new text test",
       "completed": false
     },
     {
       "id": 3,
       "folderId": 1,
-      "text": "numbers proj",
+      "text": "new text 2 test",
       "completed": true
     },
     {
