@@ -64,12 +64,6 @@
       "completed": false
     },
     {
-      "id": 2,
-      "folderId": 1,
-      "text": "adaline",
-      "completed": false
-    },
-    {
       "id": 3,
       "folderId": 1,
       "text": "numbers proj",
@@ -86,18 +80,6 @@
       "text": "new task test",
       "completed": false,
       "id": 5
-    },
-    {
-      "folderId": 2,
-      "text": "new task test react",
-      "completed": false,
-      "id": 6
-    },
-    {
-      "folderId": 3,
-      "text": "algorithm 6",
-      "completed": false,
-      "id": 7
     },
     {
       "folderId": 3,

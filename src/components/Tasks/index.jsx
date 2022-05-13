@@ -6,7 +6,7 @@ import Task from './Task';
 
 import Styles from './Tasks.module.scss';
 
-function Tasks({ folder, onEditTitle, onAddTask, isFolderEmpty = false, showAddTask = true }) {
+function Tasks({ folder, onEditTitle, onAddTask, onRemoveTask, isFolderEmpty = false, showAddTask = true }) {
     const editTitle = () => {
         const newName = window.prompt("The folder name:", folder.name);
         if (newName) {
@@ -19,6 +19,21 @@ function Tasks({ folder, onEditTitle, onAddTask, isFolderEmpty = false, showAddT
         } else if (newName.length == 0) {
             alert("The folder name shouldn't be empty!");
         }
+    }
+
+    const removeTask = (task) => {
+        if (window.confirm("Do You really want to delete the task?")) {
+            axios.delete(`http://localhost:3001/tasks/${task.id}`)
+                .then(() => {
+                    onRemoveTask(task.folderId, task.id);
+                }).catch(() => {
+                    alert("Error while deleting task");
+                });
+        }
+    }
+
+    const editTask = (task) => {
+        alert(`Edit task folderId: ${task.folderId} taskId:${task.id}`);
     }
 
     return (
@@ -39,7 +54,7 @@ function Tasks({ folder, onEditTitle, onAddTask, isFolderEmpty = false, showAddT
                         <React.Fragment>
                             {
                                 folder.tasks.map((task) => (
-                                    <Task key={task.id} {...task} />
+                                    <Task key={task.id} {...task} editTask={() => editTask(task)} removeTask={() => removeTask(task)} />
                                 ))
                             }
                             {showAddTask && <AddTask folder={folder} onAddTask={onAddTask} />}
