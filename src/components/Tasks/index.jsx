@@ -6,7 +6,7 @@ import Task from './Task';
 
 import Styles from './Tasks.module.scss';
 
-function Tasks({ folder, onEditTitle, onAddTask, onRemoveTask, onEditTaskText, isFolderEmpty = false, showAddTask = true }) {
+function Tasks({ folder, onEditTitle, onAddTask, onRemoveTask, onEditTaskText, onTaskCheckbox, isFolderEmpty = false, showAddTask = true }) {
     const editTitle = () => {
         const newName = window.prompt("The folder name:", folder.name);
         if (newName) {
@@ -46,6 +46,15 @@ function Tasks({ folder, onEditTitle, onAddTask, onRemoveTask, onEditTaskText, i
         }
     }
 
+    const checkTask = (taskId, isChecked) => {
+        onTaskCheckbox(folder.id, taskId, isChecked);
+        axios.patch(`http://localhost:3001/tasks/${taskId}`, {
+            completed: isChecked
+        }).catch(() => {
+            alert("Error while updating checkbox!");
+        });
+    }
+
     return (
         <div className={Styles['tasks']}>
             {!isFolderEmpty && <h2 className={`${Styles['tasks__title']} ${Styles[`tasks__title--${folder.color.name}`]}`}>
@@ -64,10 +73,10 @@ function Tasks({ folder, onEditTitle, onAddTask, onRemoveTask, onEditTaskText, i
                         <React.Fragment>
                             {
                                 folder.tasks.map((task) => (
-                                    <Task key={task.id} {...task} editTask={() => editTask(task)} removeTask={() => removeTask(task)} />
+                                    <Task key={task.id} {...task} editTask={() => editTask(task)} removeTask={() => removeTask(task)} checkTask={checkTask} />
                                 ))
                             }
-                            {showAddTask && <AddTask folder={folder} onAddTask={onAddTask} />}
+                            {showAddTask && <AddTask key={folder.id} folder={folder} onAddTask={onAddTask} />}
                         </React.Fragment>
                     )
                 }

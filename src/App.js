@@ -96,6 +96,21 @@ function App() {
     setFolders(updatedFolders);
   }
 
+  const onTaskCheckbox = (folderId, taskId, isChecked) => {
+    const updatedFolders = folders.map((folder) => {
+      if (folder.id === folderId) {
+        folder.tasks.map((task) => {
+          if (task.id === taskId) {
+            task.completed = isChecked;
+          }
+          return task;
+        });
+      }
+      return folder;
+    });
+    setFolders(updatedFolders);
+  }
+
   return (
     <div className="todo">
       <div className="todo__sidebar">
@@ -115,9 +130,9 @@ function App() {
       <div className="todo__tasks">
         <Routes>
           <Route exact path="/" element={folders && folders.map((folder) => (
-            <Tasks key={folder.id} folder={folder} onEditTitle={onEditFolderTitle} onAddTask={onAddTask} onRemoveTask={onRemoveTask} onEditTaskText={onEditTaskText} isFolderEmpty={folder.tasks.length === 0} showAddTask={false} />
+            <Tasks key={folder.id} folder={folder} onEditTitle={onEditFolderTitle} onAddTask={onAddTask} onRemoveTask={onRemoveTask} onEditTaskText={onEditTaskText} onTaskCheckbox={onTaskCheckbox} isFolderEmpty={folder.tasks.length === 0} showAddTask={false} />
           ))} />
-          <Route path="/folders/:id" element={folders.length > 0 && selectedFolder && <Tasks folder={selectedFolder} onEditTitle={onEditFolderTitle} onAddTask={onAddTask} onRemoveTask={onRemoveTask} onEditTaskText={onEditTaskText} />} />
+          <Route path="/folders/:id" element={folders.length > 0 && selectedFolder && <Tasks folder={selectedFolder} onEditTitle={onEditFolderTitle} onAddTask={onAddTask} onRemoveTask={onRemoveTask} onEditTaskText={onEditTaskText} onTaskCheckbox={onTaskCheckbox} />} />
         </Routes>
       </div>
     </div>

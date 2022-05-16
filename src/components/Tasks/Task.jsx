@@ -2,11 +2,11 @@ import React from 'react';
 
 import Styles from './Tasks.module.scss';
 
-function Task({ id, text, completed, editTask, removeTask }) {
+function Task({ id, text, completed, editTask, removeTask, checkTask }) {
     return (
         <div key={id} className={Styles['tasks__items-row']}>
             <div className={Styles['checkbox']}>
-                <input id={`task-${id}`} type="checkbox" />
+                <input checked={completed} onChange={(e) => checkTask(id, e.target.checked)} id={`task-${id}`} type="checkbox" />
                 <label htmlFor={`task-${id}`}>
                     <svg width="11" height="8" viewBox="0 0 11 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M9.29999 1.20001L3.79999 6.70001L1.29999 4.20001" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
